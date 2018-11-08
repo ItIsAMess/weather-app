@@ -6,6 +6,9 @@ const weatherListener = require('./weatherListener');
 
 const apiKey = 'd6396c7ad7037c16d4f01c521851a118';
 
+const PORT = process.env.PORT || 3000;
+console.log(PORT);
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
@@ -23,6 +26,9 @@ app.post('/', function (req, res) {
   });
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+// if(PORT == null || PORT == "") {
+// 	PORT = 3000;
+// }
+app.listen(PORT, function() {
+    console.log(`Our app is running on port ${ PORT }`);
+});
